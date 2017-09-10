@@ -7510,7 +7510,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-6 study-grid">
                 <h3>About Me..<span>!</span></h3>
                 <div class="study1">
-                    <p><?=$about?></p>=
+                    <p><?=$about?></p>
                 </div>
             </div>
             <div class="col-md-6 study-grid">
@@ -7522,77 +7522,92 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!--end study-section-->
 <!--start-services-section-->
-<div class="service-section" id="service">
-    <div class="container">
-
-        <div class="service-grids">
-            <div class="col-md-4 service-grid">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                <h4>THE BEST DESIGN</h4>
-                <span> </span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>
-            </div>
-            <div class="col-md-4 service-grid">
-                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-                <h4>THE BEST SUPPORT</h4>
-                <span> </span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>
-            </div>
-            <div class="col-md-4 service-grid">
-                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                <h4>THE BEST SOLUTIONS</h4>
-                <span> </span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-</div>
+<!--<div class="service-section" id="service">-->
+<!--    <div class="container">-->
+<!---->
+<!--        <div class="service-grids">-->
+<!--            <div class="col-md-4 service-grid">-->
+<!--                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>-->
+<!--                <h4>THE BEST DESIGN</h4>-->
+<!--                <span> </span>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 service-grid">-->
+<!--                <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>-->
+<!--                <h4>THE BEST SUPPORT</h4>-->
+<!--                <span> </span>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 service-grid">-->
+<!--                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>-->
+<!--                <h4>THE BEST SOLUTIONS</h4>-->
+<!--                <span> </span>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem Ipsum passages containing of Letraset sheets</p>-->
+<!--            </div>-->
+<!--            <div class="clearfix"> </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--end services-section-->
 <!--start-social-section-->
 <div class="social-icons">
-    <h3>Social Network</h3>
+<!--    <h3>Network</h3>-->
     <div class="container">
         <div class="col-md-3 face">
-            <p><i class="facebook"> </i> 733k</p>
-            <h4>facebook likes</h4>
+<!--            <p><i class="facebook"> </i> </p>-->
+<!--            <h4>Network</h4>-->
         </div>
-        <div class="col-md-3 face">
-            <p><i class="twitter"> </i> 620k</p>
-            <h4>twitter followers</h4>
+        <div class="col-md-1 face">
+<!--            <p><i class="facebook"> </i><450 </p>-->
+<!--            <h4>Network</h4>-->
         </div>
-        <div class="col-md-3 face">
-            <p><i class="google"> </i> 412k</p>
-            <h4>google+ followers</h4>
+        <div class="col-md-4 face">
+            <p><i class="facebook"> </i><h2>Network of <span style="color: red; size: 20px;">450</span> </h2> </p>
+<!--            <h4>Network</h4>-->
         </div>
+        <div class="col-md-1 face">
+<!--            <p><i class="facebook"> </i>450 </p>-->
+<!--            <h4>Network</h4>-->
+        </div>
+            <!--        <div class="col-md-3 face">-->
+<!--            <p><i class="twitter"> </i> 620</p>-->
+<!--            <h4></h4>-->
+<!--        </div>-->
+<!--        <div class="col-md-3 face">-->
+<!--            <p><i class="google"> </i> 412k</p>-->
+<!--            <h4>google+ followers</h4>-->
+<!--        </div>-->
         <div class="col-md-3 face">
-            <p><i class="beh"> </i> 322k</p>
-            <h4>behance followers</h4>
+<!--            <p><i class="beh"> </i> 322k</p>-->
+<!--            <h4>behance followers</h4>-->
         </div>
         <div class="clearfix"> </div>
     </div>
 </div>
+<form action="<?= base_url('index.php/user/requestHandle') ?>" method="post">
+<div style="margin-left: 40%; padding-bottom: 5%;"><button type="button" class="btn btn-primary btn-lg">Connect With <?=$name?></button></div>
+</form>
 <!--end-social-section-->
 <!--start-contact-section-->
-<div class="contact-section" id="contact">
-    <div class="container">
-        <h3>contact us</h3>
-        <div class="contact-details">
-            <form>
-                <div class="col-md-6 contact-left">
-                    <input type="text" class="text" value="Name *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name *';}">
-                    <input type="text" class="text" value="Email *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email *';}">
-                    <input type="text" class="text" value="phone *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone *';}">
-                </div>
-                <div class="col-md-6 contact-right">
-                    <textarea  value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message *</textarea>
-                    <input type="submit" value="Send Message"/>
-                </div>
-                <div class="clearfix"> </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!--<div class="contact-section" id="contact">-->
+<!--    <div class="container">-->
+<!--        <h3>contact us</h3>-->
+<!--        <div class="contact-details">-->
+<!--            <form>-->
+<!--                <div class="col-md-6 contact-left">-->
+<!--                    <input type="text" class="text" value="Name *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name *';}">-->
+<!--                    <input type="text" class="text" value="Email *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email *';}">-->
+<!--                    <input type="text" class="text" value="phone *" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone *';}">-->
+<!--                </div>-->
+<!--                <div class="col-md-6 contact-right">-->
+<!--                    <textarea  value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message *</textarea>-->
+<!--                    <input type="submit" value="Send Message"/>-->
+<!--                </div>-->
+<!--                <div class="clearfix"> </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--end-contact-section-->
 <!--start-map-section-->
 <div class="google-map">
