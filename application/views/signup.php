@@ -137,6 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+<div style="text-align: center">Already have an account <a href="<?= base_url('index.php/user/login')?>">Sign in</a>
+</div>
 <form action="<?=  base_url('index.php/user/signup_process') ?>" method="post">
 
     <h1>Sign Up</h1>
@@ -194,7 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
         <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
         <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
-        <br><h3>Upload Profile Picture</h3>    <input type="file" id="pic" required=" ">
+        <br><h3>Upload Profile Picture</h3>    <input type="file" id="pic" >
     </fieldset>
     <button type="submit">Sign Up</button>
 </form>

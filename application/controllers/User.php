@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+    var $target;
     public function __construct()
 
     {
@@ -28,27 +29,111 @@ class User extends CI_Controller
         $this->load->model('Db_model');
         $data = $this->_fetch_data_from_post();
         $this->_insert($data);
-        redirect(base_url("index.php/user/dashboard"));
+        redirect(base_url("index.php/user/login"));
 
     }
-    function requestHandle()
-    {
-////        $forID=define;
-//        $this->recHandle($forID);
-//        $this->sendHandle();
 
+    function reqCheck(){
 
         $this->load->model('Db_model');
-        $query = $this->Db_model->get('EMAIL');
-        foreach ($query->result() as $row)
-        {
-            $data['id'] = $row->id;
-        }
-        echo 'wow';
-        echo '<br>';
-        print_r($data);
-        die;
 
+        $apna= $this->session->userdata('username');
+        $query = "select * from userdata where EMAIL = '" . $apna."'";
+        $query = $this->Db_model->_custom_query($query);
+
+        foreach ($query->result() as $row) {
+            $data['id'] = $row->id;
+            $data['pwd'] = $row->PASSWORD;
+            $data['email'] = $row->EMAIL;
+            $data['work'] = $row->WORKING;
+            $data['exp'] = $row->EXPERIENCE;
+            $data['score'] = $row->SCORE;
+            $data['name'] = $row->NAME;
+            $data['usr'] = $row->USERNAME;
+            $data['about'] = $row->ABOUT;
+            $data['score'] = $row->SCORE;
+            $data['parent'] = $row->PARENT;
+            $data['dauA'] = $row->DAUA;
+            $data['dauB'] = $row->DAUB;
+        }
+        if ($data['dauA']>0 || $data['dauB']>0)
+        {
+            $this->load->view('requestCheck', $data);
+        }
+
+    }
+    function requestHandle( )
+    {
+        $target=$this->target;
+        $this->load->model('Db_model');
+        $query = "select * from userdata where EMAIL = '" . $target."'";
+        $query = $this->Db_model->_custom_query($query);
+//        foreach ($query->result() as $row)
+//        {
+//            $data['id'] = $row->id;
+//            $data['pwd'] = $row->PASSWORD;
+//            $data['email'] = $row->EMAIL;
+//            $data['work'] = $row->WORKING;
+//            $data['exp'] = $row->EXPERIENCE;
+//            $data['score'] = $row->SCORE;
+//            $data['name'] = $row->NAME;
+//            $data['usr'] = $row->USERNAME;
+//            $data['about'] = $row->ABOUT;
+//            $data['score'] = $row->SCORE;
+//            $data['parent']= $row->PARENT;
+//            $data['dauA']= $row->DAUA;
+//            $data['dauB']= $row->DAUB;
+//        }
+//        $data= $this->_user_details($target);
+        $this->load->model('Db_model');
+        $query = "select * from userdata where EMAIL = '" . $target ."'";
+        $query = $this->Db_model->_custom_query($query);
+        foreach ($query->result() as $row) {
+            //DATA AND SCHEMA REQUIRED ACCORDINGLY
+
+            $data['id'] = $row->id;
+            $data['pwd'] = $row->PASSWORD;
+            $data['email'] = $row->EMAIL;
+            $data['work'] = $row->WORKING;
+            $data['exp'] = $row->EXPERIENCE;
+            $data['score'] = $row->SCORE;
+            $data['name'] = $row->NAME;
+            $data['usr'] = $row->USERNAME;
+            $data['about'] = $row->ABOUT;
+            $data['score'] = $row->SCORE;
+            $data['parent']= $row->PARENT;
+            $data['dauA']= $row->DAUA;
+            $data['dauB']= $row->DAUB;
+        }
+
+
+        ///
+        $usr = $this->session->userdata('username');
+        ///
+
+
+        if ($data['dauA']!=null)
+        {
+            if($data['dauB']!=null) {
+                if ($data['parent'] == null) {
+                    echo 'no permisson';
+                }
+            }
+        }
+        else
+        {
+                if ($data['dauA']!=null){
+                    $data['dauB']=$usr;
+                }
+                elseif ($data['dauB']!=null){
+                    $data['dauA']=$usr;
+                }
+                else{
+                    $data['dauA']=$usr;
+                }
+                echo 'Your request is sent. Wait for other to respond';
+        }
+        return $data;
     }
     function recHandle($forID)
     {
@@ -137,20 +222,39 @@ class User extends CI_Controller
         $username = $this->input->post('email', TRUE);
         $password = $this->input->post('pwd', TRUE);
         $submit = $this->input->post('login', TRUE);
-
-
         if ($submit == 'Login') {
             if (True) {
                 //check if username and password is correct
-                $usr_result = $this->_get_user($username, $password);
+//                $usr_result = $this->_get_user($username, $password);
+                $this->load->model('Db_model');
+                $query = "select * from userdata where EMAIL = '" . 'as3eem@gmail.com' ."'";
+                $query = $this->Db_model->_custom_query($query);
+                foreach ($query->result() as $row) {
+                    //DATA AND SCHEMA REQUIRED ACCORDINGLY
 
-                if ($usr_result > 0) //active user record is present
+                    $data['id'] = $row->id;
+                    $data['pwd'] = $row->PASSWORD;
+                    $data['email'] = $row->EMAIL;
+                    $data['work'] = $row->WORKING;
+                    $data['exp'] = $row->EXPERIENCE;
+                    $data['score'] = $row->SCORE;
+                    $data['name'] = $row->NAME;
+                    $data['usr'] = $row->USERNAME;
+                    $data['about'] = $row->ABOUT;
+                    $data['score'] = $row->SCORE;
+                    $data['parent']= $row->PARENT;
+                    $data['dauA']= $row->DAUA;
+                    $data['dauB']= $row->DAUB;
+                }
+
+                if ($data > 0) //active user record is present
                 {
                     //set the session variables
                     $sessiondata = array(
                         'username' => $username,
                         'logged_in' => TRUE
                     );
+
                     $this->session->set_userdata($sessiondata);
                     redirect(base_url("index.php/user/dashboard"));
                 } else {
@@ -168,10 +272,10 @@ class User extends CI_Controller
 
     function dashboard()
     {
+
         $user_login = $this->session->userdata('logged_in');
         $mailwa = $this->session->userdata('username');
         $user_data = $this->_user_details($mailwa);
-
         if ($user_login) {
             $this->load->view('user_panel', $user_data);
         } else {
@@ -190,8 +294,8 @@ class User extends CI_Controller
     function _user_details($email)
     {
         $this->load->model('Db_model');
-        $query = $this->Db_model->get('EMAIL');
-
+        $query = "select * from userdata where EMAIL = '" . $email ."'";
+        $query = $this->Db_model->_custom_query($query);
         foreach ($query->result() as $row) {
             //DATA AND SCHEMA REQUIRED ACCORDINGLY
 
@@ -208,12 +312,39 @@ class User extends CI_Controller
             $data['parent']= $row->PARENT;
             $data['dauA']= $row->DAUA;
             $data['dauB']= $row->DAUB;
-
-
         }
+
         return $data;
 
 
+
 /////////////////////
+    }
+
+    function searchUser()
+    {
+        $target = $this->input->post('search', TRUE);
+        $this->load->model('Db_model');
+        $query = "select * from userdata where EMAIL = '" . $target."'";
+        $query = $this->Db_model->_custom_query($query);
+        foreach ($query->result() as $row)
+        {
+            $data['id'] = $row->id;
+            $data['pwd'] = $row->PASSWORD;
+            $data['email'] = $row->EMAIL;
+            $data['work'] = $row->WORKING;
+            $data['exp'] = $row->EXPERIENCE;
+            $data['score'] = $row->SCORE;
+            $data['name'] = $row->NAME;
+            $data['usr'] = $row->USERNAME;
+            $data['about'] = $row->ABOUT;
+            $data['score'] = $row->SCORE;
+            $data['parent']= $row->PARENT;
+            $data['dauA']= $row->DAUA;
+            $data['dauB']= $row->DAUB;
+        }
+
+        $this->load->view('user_panel', $data);
+        return $data;
     }
 }
